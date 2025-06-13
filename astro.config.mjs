@@ -8,7 +8,8 @@ import { fileURLToPath } from 'url'
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  site: 'https://accessible-astro-starter.incluud.dev',
+  site: 'https://brysonbest.github.io/personal-portfolio',
+  base: '/personal-portfolio',
   integrations: [mdx(), icon(), compress()],
   vite: {
     css: {
