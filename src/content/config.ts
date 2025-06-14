@@ -13,4 +13,14 @@ export const collections = {
       heroImage: z.string(),
     }),
   }),
+  blog: defineCollection({
+    schema: z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.string(),
+      heroImage: z.string().optional(),
+      author: z.string().optional(),
+      hidden: z.boolean().optional(),
+    }),
+  }),
 }
