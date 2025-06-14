@@ -1,0 +1,61 @@
+---
+title: 'Pop.Eats'
+description: 'Restaurant ordering application'
+projectDate: '2022-02-10'
+heroImage: '/images/projects/popeats/pop-eats.jpg'
+tags: ['JavaScript', 'Node.js', 'PostgreSQL', 'Express', 'jQuery']
+githubUrl: 'https://github.com/brysonbest/pop-eats'
+liveUrl: ''
+author: 'Bryson Best'
+---
+
+import BlockQuote from '@components/BlockQuote.astro'
+import BreakoutImage from '@components/BreakoutImage.astro'
+import { Image } from 'astro:assets'
+
+## Project Overview
+
+Pop.Eats is a full-stack food ordering application for a single restaurant. Designed to streamline the ordering process, it provides a user-friendly interface for customers to browse the menu, place orders, and receive SMS notifications about their order status.
+
+Pop.Eats was developed as part of a team project to create a practical, real-world application for a fictional restaurant. The application addresses the need for a streamlined ordering system that benefits both customers and restaurant staff.
+
+<BreakoutImage src="/images/projects/popeats/pop-eats.jpg" />
+
+## Technical Challenges
+
+One of the main challenges was implementing the real-time notification system to keep customers informed about their order status. This was solved by integrating the Twilio API for SMS messaging, triggered by status changes made through the admin dashboard.
+
+Another challenge was optimizing the user experience for both customers and staff. The solution involved creating separate interfaces with different permissions and capabilities, tailored to each user type's needs.
+
+## Project Gallery
+
+
+## Key Features
+
+- **User-Friendly Menu Interface**: Intuitive menu browsing with categories, item descriptions, and prices
+- **Order Management**: Add items to cart, modify quantities, and submit orders
+- **SMS Notifications**: Real-time updates to customers about order status using Twilio integration
+- **Admin Dashboard**: Staff interface for order management and status updates
+- **Responsive Design**: Optimized for both mobile and desktop experiences
+
+## Technical Stack
+
+- **Frontend**: HTML, CSS, JavaScript, jQuery, AJAX, SASS
+- **Backend**: Node.js, Express
+- **Database**: PostgreSQL
+- **Libraries/APIs**: Twilio API for SMS notifications
+- **Deployment**: Heroku
+
+## Development Process
+
+This project was developed using an agile methodology over a two-week sprint. The team consisted of three developers, each responsible for different aspects of the application:
+
+1. **User Interface & Frontend Logic**: Design and implementation of the customer-facing ordering interface
+2. **Backend Services**: Database design, API endpoints, and business logic
+3. **Integration & Testing**: SMS notification service integration and comprehensive testing
+
+## Testimonial
+
+<BlockQuote author="Restaurant Owner">
+  Pop.Eats transformed our ordering process and improved communication with our customers.
+</BlockQuote>

@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url'
 export default defineConfig({
   compressHTML: true,
   site: 'https://brysonbest.github.io/personal-portfolio',
-  base: '/personal-portfolio',
+  // base: '/personal-portfolio',
   integrations: [mdx(), icon(), compress()],
   vite: {
     css: {

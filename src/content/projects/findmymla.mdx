@@ -1,0 +1,46 @@
+---
+title: 'FindMyMLA'
+description: 'Find your BC MLA by postal code'
+projectDate: '2023-11-10'
+
+heroImage: '/images/projects/findmymla/findmymla.png'
+tags: ['Vue.js', 'Express', 'Google Maps API', 'Node.js']
+githubUrl: 'https://github.com/brysonbest/findmymla'
+liveUrl: 'https://findmymla.ca'
+author: 'Bryson Best'
+---
+
+import BlockQuote from '@components/BlockQuote.astro'
+import BreakoutImage from '@components/BreakoutImage.astro'
+import { Image } from 'astro:assets'
+
+## Project Overview
+
+The FindMyMLA application is a simple web application that helps Canadian citizens find their MLA, MPP, MNA, or MHA. The application uses the postal code of the user to search for their representative, or allows a user to find their representative based on their current location. The application will return the name, party, and contact information for the representative.
+
+This is a not-for-profit project intended to aid citizens with finding their representatives. This project was built simply with the purpose of being easily reusable and re-insertable for the open source use by other non-profits.
+
+The application can use an individual’s postal code, or can search based on their current location.
+
+
+## Technical Challenges
+
+The main challenge was integrating accurate postal code lookup and geolocation to reliably match users with their correct representatives. Ensuring data accuracy and privacy for users was also a key concern, addressed by using trusted APIs and minimal data retention.
+
+## Project Gallery
+
+<Image
+  src="/images/projects/findmymla/findmypostal.gif"
+  alt="FindMyMLA Postal Code Search"
+  width={1200}
+  height={600}
+  class="h-[250px] w-full rounded-lg object-cover"
+/>
+
+## Testimonial
+
+<BlockQuote author="Open Source User">
+  FindMyMLA made it incredibly easy for me to find and contact my representative. The interface is simple and effective!
+</BlockQuote>
+
+The project is open source and designed for easy reuse by other non-profits or civic tech initiatives.

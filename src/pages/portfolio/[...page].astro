@@ -6,61 +6,63 @@ import { getCollection } from 'astro:content'
 import type { GetStaticPaths, Page } from 'astro'
 import type { CollectionEntry } from 'astro:content'
 
-// Import images directly for optimization
-import projectImage1 from '@assets/images/projects/project-image-1.png'
-import projectImage2 from '@assets/images/projects/project-image-2.png'
-import projectImage3 from '@assets/images/projects/project-image-3.png'
-import projectImage4 from '@assets/images/projects/project-image-4.png'
-import projectImage5 from '@assets/images/projects/project-image-5.png'
-import projectImage6 from '@assets/images/projects/project-image-6.png'
-
 export const getStaticPaths = (async ({ paginate }) => {
-  const projects = await getCollection('projects')
+  let projects = await getCollection('projects')
 
-  const projectImages = [projectImage1, projectImage2, projectImage3, projectImage4, projectImage5, projectImage6]
-
-  const projectsWithImages = projects.map((project, index) => {
-    return {
-      ...project,
-      featuredImage: projectImages[index % projectImages.length],
-    }
+  // Filter out items with missing or invalid dates
+  projects = projects.filter((p) => {
+    const date = new Date(p.data.projectDate)
+    return !isNaN(date.getTime())
   })
 
+  // Sort by projectDate descending (newest first)
+  projects.sort((a, b) => {
+    const dateA = new Date(a.data.projectDate)
+    const dateB = new Date(b.data.projectDate)
+    return dateB.getTime() - dateA.getTime()
+  })
+
+  // Attach heroImage from frontmatter
+  const projectsWithImages = projects.map((project) => ({
+    ...project,
+    featuredImage: project.data.heroImage || undefined,
+  }))
+
+  // Paginate sorted projects (6 per page)
   return paginate(projectsWithImages, { pageSize: 6 })
 }) satisfies GetStaticPaths
 
 interface Props {
-  page: Page<CollectionEntry<'projects'> & { featuredImage: any }>
+  page: Page<CollectionEntry<'projects'> & { featuredImage?: any }>
 }
 
 const { page } = Astro.props
-
-// Prepare pagination props
-const currentPage = page.currentPage
-const totalPages = Math.ceil(page.total / page.size)
 ---
 
 <DefaultLayout
-  title="Portfolio"
+  title="Project Portfolio"
   description="A showcase of projects built with Astro Content Collections, demonstrating dynamic content management."
 >
   <PageHeader
-    title="Portfolio"
-    subtitle='A showcase of projects built with Astro Content Collections, demonstrating dynamic content management and organization. Learn more about <a href="https://docs.astro.build/en/guides/content-collections/">Astro Content Collections</a> in the official documentation.'
+    title="Project Portfolio"
+    subtitle="This is a collection of some of my most recent projects."
     bgType="bordered"
   />
+
   <section class="my-12">
     <div class="container">
-      <p class="text-sm"><em>Project {page.start + 1} through {page.end + 1} of {page.total} total projects</em></p>
+      <!-- Uncomment for debugging -->
+      <!-- <pre>{JSON.stringify(page.data.map(p => p.data.projectDate), null, 2)}</pre> -->
+
       <ul class="my-3 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           page.data.map((project) => (
             <li>
               <Card
                 imageComponent={project.featuredImage}
-                url={'/portfolio/' + project.id}
+                url={`/portfolio/${project.id}`}
                 title={project.data.title}
-                footer={'Author: ' + project.data.author}
+                footer={`Author: ${project.data.author || 'Unknown'}`}
               >
                 {project.data.description}
               </Card>
@@ -68,11 +70,12 @@ const totalPages = Math.ceil(page.total / page.size)
           ))
         }
       </ul>
+
       <div class="mt-12 grid place-content-center">
         <Pagination
           firstPage={page.url.prev ? '/portfolio' : null}
-          previousPage={page.url.prev ? page.url.prev : null}
-          nextPage={page.url.next ? page.url.next : null}
+          previousPage={page.url.prev || null}
+          nextPage={page.url.next || null}
           lastPage={page.url.next ? `/portfolio/${Math.ceil(page.total / page.size)}` : null}
           currentPage={`${page.currentPage}`}
           totalPages={`${Math.ceil(page.total / page.size)}`}
