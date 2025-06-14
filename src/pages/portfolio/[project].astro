@@ -22,7 +22,7 @@ const { Content } = await render(project)
 
 const author = {
   name: project.data.author,
-  image: project.data.heroImage, // Use the heroImage from frontmatter
+  image: project.data.heroImage,
   bio: 'Project Creator',
 }
 ---
@@ -34,6 +34,8 @@ const author = {
     author={author}
     bgType="bordered"
     featuredImage={project.data.heroImage}
+    githubUrl={project.data.githubUrl}
+    liveUrl={project.data.liveUrl}
   />
   <section class="my-12">
     <div class="narrow space-content container">

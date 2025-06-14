@@ -15,41 +15,34 @@ import { Image } from 'astro:assets'
 
 ## Project Overview
 
-[WriteMyMLA](https://writemymla.streamlit.app/) is a web application that can be used by Canadians to search for and write their provincial MLA's, MPP's, MNA's, or MHA's. The application will return the name, party, and contact information for the representative, and provide the user with the opportunity to create an AI-generated letter. This is a not-for-profit project intended to aid citizens with finding and writing their representatives.
-
-For ease of deployment and duplication by other not-for-profits, the application has been written in Python and deployed on Streamlit.io. Users may easily duplicate and deploy a version of the web application themselves.
+[WriteMyMLA](https://writemymla.streamlit.app/) is a web application that can be used by canadians to search for and write their provincial MLA’s, MPP’s, MNA’s, or MHA’s. The application will return the name, party, and contact information for the representative, and provide the user with the opportunity to create an AI-generated letter. This is a not-for-profit project intended to aid citizens with finding and writing their representatives.
 
 <BreakoutImage src="/images/projects/writemymla/writemymla.png" />
 
 ## Technical Challenges
 
-This project was an exercise in utilizing the OpenAI API to create a controlled response and return a consistent, specific product. The goal was to utilize this API to prove that [LLMs](https://en.wikipedia.org/wiki/Large_language_model) can be utilized by non-profits to provide citizens with additional support in engaging with their provincial representatives. Ensuring privacy and responsible AI use were key challenges.
+This project was an exercise in utilizing the OpenAI API to create a controlled response and return a consistent, specific product. The goal was to utilize this API to prove that [LLMs](https://en.wikipedia.org/wiki/Large_language_model) can be utilized by non-profits to provide citizens with additional support in engaging with their provincial representatives. 
 
-## Project Gallery
+For ease of deployment and duplication by other not-for-profits, the application has been written in Python and deployed on Streamlit.io. Users may easily duplicate and deploy a version of the web application themselves.
 
+A self-deployment option is available, and individuals can also use the web platform in tandem with a local LLM instances to run the application for free from their local device.
+
+Ensuring privacy and responsible AI use were key challenges.
 
 ## Features
 
 - Search for representatives using postal code
-- View representative details including party affiliation and contact information
+- View representative details
 - Generate an AI-powered letter based on user inputs
-- Edit and customize the generated letter
-- Download the letter as a PDF
-- Copy to clipboard functionality
 - Mobile-friendly design
 
 ## Technologies Used
 
+
 - **Python**: Core programming language
 - **Streamlit**: Web application framework for easy deployment
+- **[Geocoder.ca](https://geocoder.ca/)** Provides the API used to accurately search using postal code information.
+- **[Represent Civic Information API](https://represent.opennorth.ca/)** Provides the API used to search for representatives based on location.
 - **OpenAI API**: For generating customized letters
-- **Google Civic API**: For postal code lookup
-- **OpenParliament API**: For accessing representative data
-
-## Testimonial
-
-<BlockQuote author="Community User">
-  WriteMyMLA made it easy for me to contact my representative with a personalized letter. The AI-generated content was a great starting point!
-</BlockQuote>
 
 The application is open source and can be self-deployed or used online for free.

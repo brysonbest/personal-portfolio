@@ -15,9 +15,11 @@ import { Image } from 'astro:assets'
 
 ## Project Overview
 
-Pop.Eats is a full-stack food ordering application for a single restaurant. Designed to streamline the ordering process, it provides a user-friendly interface for customers to browse the menu, place orders, and receive SMS notifications about their order status.
+Pop.Eats is a responsive, single restaurant ordering app. The app serves as an intermediary for both the client (customer) and the restaurant.
 
-Pop.Eats was developed as part of a team project to create a practical, real-world application for a fictional restaurant. The application addresses the need for a streamlined ordering system that benefits both customers and restaurant staff.
+Customers can log in, place orders, view their previous orders and update their profile. As a restaurant owner, the user can also update the menu as well as accept and process orders. When an order is placed, the user receives a text confirming receipt and showing the restaurant’s estimated pick-up time.
+
+This application was built on the front end using EJS (Embedded Javascript Templating) and SASS CSS styling. The backend utilizes ExpressJS, with direct PostgreSQL database interactions.
 
 <BreakoutImage src="/images/projects/popeats/pop-eats.jpg" />
 
@@ -28,6 +30,25 @@ One of the main challenges was implementing the real-time notification system to
 Another challenge was optimizing the user experience for both customers and staff. The solution involved creating separate interfaces with different permissions and capabilities, tailored to each user type's needs.
 
 ## Project Gallery
+
+<Image
+  src="/images/projects/popeats/order-demo.gif"
+  alt="Pop.Eats Application demo animation"
+width={1400} height={700}
+  class="h-[250px] w-full rounded-lg object-cover"
+/>
+<Image
+  src="/images/projects/popeats/popeats-manage.png"
+  alt="Pop.Eats management dashboard screenshot"
+width={1400} height={700}
+  class="h-[250px] w-full rounded-lg object-cover"
+/>
+<Image
+  src="/images/projects/popeats/pop-eats-profile.png"
+  alt="Pop.Eats personal profile screenshot"
+width={1400} height={700}
+  class="h-[250px] w-full rounded-lg object-cover"
+/>
 
 
 ## Key Features
@@ -54,8 +75,8 @@ This project was developed using an agile methodology over a two-week sprint. Th
 2. **Backend Services**: Database design, API endpoints, and business logic
 3. **Integration & Testing**: SMS notification service integration and comprehensive testing
 
-## Testimonial
+## Technologies Used
+  - [Google Pay](https://developers.google.com/pay/api) Provides the API used to manage user payments.
+  - [Twilio](https://www.twilio.com/en-us) Provides the API used to send users text notifications during booking and user communication.
+  - [Google Maps](https://developers.google.com/maps) Provides the API used to search for display the local restaurant locations.
 
-<BlockQuote author="Restaurant Owner">
-  Pop.Eats transformed our ordering process and improved communication with our customers.
-</BlockQuote>

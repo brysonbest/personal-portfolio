@@ -1,6 +1,7 @@
 ---
 import { Avatar, Breadcrumbs, BreadcrumbsItem } from 'accessible-astro-components'
 import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
 import sanitizeHtml from 'sanitize-html'
 
 /**
@@ -44,9 +45,17 @@ interface Props {
    * Whether to show the breadcrumbs
    */
   showBreadcrumbs?: boolean
+  /**
+   * The URL for the GitHub repository
+   */
+  githubUrl?: string
+  /**
+   * The URL for the live version of the project
+   */
+  liveUrl?: string
 }
 
-const { class: className, title, subtitle, bgType, showBreadcrumbs = true, featuredImage, author } = Astro.props
+const { class: className, title, subtitle, bgType, showBreadcrumbs = true, featuredImage, author, githubUrl, liveUrl } = Astro.props
 
 // Sanitize subtitle HTML if present
 const sanitizedSubtitle: string = subtitle
@@ -76,9 +85,10 @@ const sanitizedSubtitle: string = subtitle
             <Breadcrumbs>
               <BreadcrumbsItem href="/" label="Home" />
               {segments.map((segment, index) => {
+                const segmentWithoutExt = segment.replace(/\.[^/.]+$/, '')
                 const url = `/${segments.slice(0, index + 1).join('/')}`
                 const isLast = index === segments.length - 1
-                const formattedName = segment
+                const formattedName = segmentWithoutExt
                   .split('-')
                   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                   .join(' ')
@@ -105,7 +115,22 @@ const sanitizedSubtitle: string = subtitle
           </div>
         )
       }
-      <h1>{title}</h1>
+      <h1 class="flex align-baseline">{title}
+        <span class="text-3xl flex gap-0.5">
+        {githubUrl && (
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="ml-2 text-primary-500 hover:text-primary-700">
+            <Icon name="lucide:github" class="inline-block h-6 w-6" />
+            <span class="sr-only">GitHub Repository</span>
+          </a>
+        )}
+        {liveUrl && (
+          <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="ml-2 text-primary-500 hover:text-primary-700">
+            <Icon name="lucide:external-link" class="inline-block h-6 w-6" />
+            <span class="sr-only">Live Demo</span>
+          </a>
+        )}
+        </span>
+      </h1>
       {sanitizedSubtitle && <p class="text-2xl" set:html={sanitizedSubtitle} />}
       {
         author && (

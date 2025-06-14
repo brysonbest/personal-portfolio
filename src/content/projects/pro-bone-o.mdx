@@ -1,6 +1,6 @@
 ---
 title: 'Pro-Bone-O'
-description: 'Veterinary clinic management system'
+description: 'Dog walking and sitting service management system'
 projectDate: '2022-05-10'
 heroImage: '/images/projects/pro-bone-o/pro-bone-o-768x380.jpg'
 tags: ['React', 'Firebase', 'Material UI', 'JavaScript']
@@ -12,12 +12,17 @@ author: 'Bryson Best'
 import BlockQuote from '@components/BlockQuote.astro'
 import BreakoutImage from '@components/BreakoutImage.astro'
 import { Image } from 'astro:assets'
+import VideoEmbed from '@components/VideoEmbed.astro'
+
+
 
 ## Project Overview
 
-The Pro-Bone-O web application is a draft application intended to help dog owners find free dog walking/sitting services in their area utilizing the Google Maps API. This app uses React and Recoil on the frontend, with PostgreSQL and Express for the database and backend server.
+ web application is a draft application intended to help dog owners find free dog walking/sitting services in their area utilizing the Google Maps API. This app uses React and Recoil on the frontend, with PostgreSQL and Express for the database and backend server.
 
 A limited version of the app was deployed on [Netlify for demo purposes](https://pro-bone-o.netlify.app/) but is not production ready. The video below is a silent walk through of the features and interactions available through the web application.
+
+This application was built on the front end using ReactJS, with SASS and MUI React Material components for styling. The backend utilizes ExpressJS, with PostgreSQL managed through the Prisma ORM. 
 
 <BreakoutImage src="/images/projects/pro-bone-o/pro-bone-o-768x380.jpg" />
 
@@ -27,6 +32,7 @@ A significant challenge was designing a system flexible enough to accommodate di
 
 ## Project Gallery
 
+<VideoEmbed src="https://www.youtube.com/embed/T53cHo0dW54?si=859iP_Lk-A56NArs" />
 
 ## Key Features
 
@@ -34,11 +40,7 @@ A significant challenge was designing a system flexible enough to accommodate di
 - **Pet Records**: Track pet information
 - **Booking Scheduling**: Book dog walkers, or accept open bookings.
 - **Role-Based Access**: Different access levels for pet owners and pet walkers
-- **In-App Chat**: Ability to discuss
-
-## Technical Implementation
-
-Pro-Bone-O was built using React for the frontend, with Material UI providing a clean, accessible interface. Firebase powers the backend, offering real-time database functionality, authentication services, and secure storage.
+- **In-App Live Chat**: Ability to discuss bookings and pet care using websockets
 
 ### Technology Stack
 
@@ -46,18 +48,10 @@ Pro-Bone-O was built using React for the frontend, with Material UI providing a 
 - **Backend**: ExpressJS, PostgreSQL, Prisma ORM
 - **Deployment**: Netlify
 
-## Development Process
 
-This project was developed using an agile methodology over a three-week sprint. The team consisted of three developers, each responsible for different aspects of the application. This application went through a process of:
-
-1. Initial requirements gathering with stakeholders
-2. UX/UI design phase with wireframing and prototyping
-3. Incremental development of features
-4. Regular testing
-5. Refinement based on feedback
-
-## Testimonial
-
-<BlockQuote author="Demo User">
-  Pro-Bone-O's interface made it easy for me to find and book free dog walking services in my area.
-</BlockQuote>
+## Technologies Used
+  - **React**: For building the user interface
+  - **[Dog.ceo](https://dog.ceo/dog-api/)** Provides the API used to generate photos of dogs.
+  - **[Pusher](https://pusher.com/docs/channels/getting_started/javascript/)** Provides the API used for managing chats between users.
+  - **[Twilio](https://www.twilio.com/en-us)** Provides the API used to send users text notifications during booking and user communication.
+  - **[Google Maps](https://developers.google.com/maps)** Provides the API used to search for local listings, and show the listings on available on the map based on the user’s geolocation.

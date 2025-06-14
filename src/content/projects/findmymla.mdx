@@ -22,7 +22,6 @@ This is a not-for-profit project intended to aid citizens with finding their rep
 
 The application can use an individual’s postal code, or can search based on their current location.
 
-
 ## Technical Challenges
 
 The main challenge was integrating accurate postal code lookup and geolocation to reliably match users with their correct representatives. Ensuring data accuracy and privacy for users was also a key concern, addressed by using trusted APIs and minimal data retention.
@@ -33,14 +32,17 @@ The main challenge was integrating accurate postal code lookup and geolocation t
   src="/images/projects/findmymla/findmypostal.gif"
   alt="FindMyMLA Postal Code Search"
   width={1200}
-  height={600}
+  height={800}
   class="h-[250px] w-full rounded-lg object-cover"
 />
 
-## Testimonial
+## Technologies Used
 
-<BlockQuote author="Open Source User">
-  FindMyMLA made it incredibly easy for me to find and contact my representative. The interface is simple and effective!
-</BlockQuote>
+This application uses two APIs to provide citizens with the correct information.
+
+- **Python**: Core programming language
+- **Streamlit**: Web application framework for easy deployment
+- **[Geocoder.ca](https://geocoder.ca/)** Provides the API used to accurately search using postal code information.
+- **[Represent Civic Information API](https://represent.opennorth.ca/)** Provides the API used to search for representatives based on location.
 
 The project is open source and designed for easy reuse by other non-profits or civic tech initiatives.

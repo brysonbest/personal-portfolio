@@ -1,7 +1,5 @@
 ---
-import { Image } from 'astro:assets'
-import logo from '../assets/img/logo.svg'
-
+import PersonalLogo from './PersonalLogo.astro'
 /**
  * Logo Component
  *
@@ -12,15 +10,17 @@ interface Props {
    * Whether to load the image eagerly or lazily
    * @default 'eager'
    */
-  loading?: 'eager' | 'lazy'
+  loading?: 'eager' | 'lazy',
+  short?: boolean
 }
 
-const { loading = 'eager' }: Props = Astro.props
+const { short = false }: Props = Astro.props
 ---
 
 <a href="/" class="flex items-center gap-2 !no-underline">
-  <Image src={logo} alt="Accessible Astro Logo" width="47" height="37" loading={loading} />
-  <span class="font-bold">Accessible Astro</span>
+  <PersonalLogo width={short ? "47" : "200"} height="auto" name="Bryson Best" short={short} />
+     <!-- {short ? <PersonalLogo alt="Bryson Best Logo" width="47" height="37" loading={loading} /> :
+  <Image src={longLogo} alt="Bryson Best Logo" width="200" height="30" loading={loading} />  } -->
 </a>
 
 <style lang="scss">
