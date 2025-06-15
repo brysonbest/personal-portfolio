@@ -2,6 +2,8 @@
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import ExternalLink from '@components/ExternalLink.astro'
+
+const formAction = import.meta.env.PUBLIC_CONTACT_FORM_URL;
 ---
 
 <DefaultLayout title="Contact Me" description="Get in touch with me for freelance work, collaborations, or any inquiries. I look forward to hearing from you!">
@@ -18,7 +20,7 @@ import ExternalLink from '@components/ExternalLink.astro'
     <div class="space-content">
         
       <form 
-        action="https://usebasin.com/f/afff98f360f7" 
+        action={formAction}
         method="POST" 
         enctype="multipart/form-data" 
         id="contact-form" 
