@@ -3,8 +3,7 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import ExternalLink from '@components/ExternalLink.astro'
 
-const backend = process.env.NETLIFY_BACKEND_URL
-const formAction = `${backend}/.netlify/functions/verify-recaptcha`
+const formAction = import.meta.env.PUBLIC_CONTACT_FORM_URL;
 ---
 
 <DefaultLayout title="Contact Me" description="Get in touch with me for freelance work, collaborations, or any inquiries. I look forward to hearing from you!">
@@ -73,7 +72,33 @@ const formAction = `${backend}/.netlify/functions/verify-recaptcha`
                     const recaptchaInput = document.getElementById("g-recaptcha-response");
                     if (recaptchaInput) {
                       recaptchaInput.value = token;
-                      form.submit();
+                      // check if the token is valid
+                      fetch(`${import.meta.env.PUBLIC_NETLIFY_BACKEND_URL}/.netlify/functions/verify-recaptcha`, {
+                        method: 'POST',
+                        body: {
+                          'g-recaptcha-response': token,
+                          'name': form.name.value,
+                          'email': form.email.value,
+                          'message': form.message.value
+                        }
+
+                      })
+                      .then(response => {
+                        if (response.ok) {
+                          alert("Message sent successfully!");
+                          form.submit();
+                        } else {
+                          alert("Failed to send message. Please try again.");
+                        }
+                      })
+                      .catch(error => {
+                        console.error("Error submitting form:", error);
+                        alert("An error occurred. Please try again later.");
+                      });
+                    } else {
+                      console.error("Recaptcha input not found");
+                      alert("An error occurred. Please try again later.");
+                      return;
                     }
                   });
                 });
