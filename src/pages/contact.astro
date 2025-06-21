@@ -3,7 +3,7 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import ExternalLink from '@components/ExternalLink.astro'
 
-const formAction = import.meta.env.PUBLIC_CONTACT_FORM_URL;
+const formAction = "https://usebasin.com/f/afff98f360f7";
 ---
 
 <DefaultLayout title="Contact Me" description="Get in touch with me for freelance work, collaborations, or any inquiries. I look forward to hearing from you!">
@@ -59,6 +59,9 @@ const formAction = import.meta.env.PUBLIC_CONTACT_FORM_URL;
         }
       </script>
       <script is:inline>
+        // Hardcoded backend URL and reCAPTCHA site key
+        const backendUrl = "https://brysonbest.netlify.app";
+        const recaptchaSiteKey = "6Lf_G2ErAAAAAGEyrw2BVHSA_vdq8bFl68RSP0Vq";
         document.addEventListener("DOMContentLoaded", function () {
           const form = document.getElementById("contact-form");
           if (!form) return;
@@ -68,20 +71,20 @@ const formAction = import.meta.env.PUBLIC_CONTACT_FORM_URL;
             function submitWithRecaptcha() {
               if (typeof grecaptcha !== "undefined") {
                 grecaptcha.ready(function () {
-                  grecaptcha.execute("6Lf_G2ErAAAAAGEyrw2BVHSA_vdq8bFl68RSP0Vq", { action: "submit" }).then(function (token) {
+                  grecaptcha.execute(recaptchaSiteKey, { action: "submit" }).then(function (token) {
                     const recaptchaInput = document.getElementById("g-recaptcha-response");
                     if (recaptchaInput) {
                       recaptchaInput.value = token;
                       // check if the token is valid
-                      fetch(`${import.meta.env.PUBLIC_NETLIFY_BACKEND_URL}/.netlify/functions/verify-recaptcha`, {
+                      fetch(`${backendUrl}/.netlify/functions/verify-recaptcha`, {
                         method: 'POST',
-                        body: {
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
                           'g-recaptcha-response': token,
                           'name': form.name.value,
                           'email': form.email.value,
                           'message': form.message.value
-                        }
-
+                        })
                       })
                       .then(response => {
                         if (response.ok) {
