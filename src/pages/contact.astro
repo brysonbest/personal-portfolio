@@ -3,7 +3,8 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import ExternalLink from '@components/ExternalLink.astro'
 
-const formAction = "/.netlify/functions/verify-recaptcha";
+const backend = process.env.NETLIFY_BACKEND_URL
+const formAction = `${backend}/.netlify/functions/verify-recaptcha`
 ---
 
 <DefaultLayout title="Contact Me" description="Get in touch with me for freelance work, collaborations, or any inquiries. I look forward to hearing from you!">
