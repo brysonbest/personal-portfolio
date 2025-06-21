@@ -1,0 +1,39 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+---
+
+<DefaultLayout title="Thank You" description="Thank you for reaching out. I appreciate your message and will respond as soon as possible.">
+  <section class="narrow container my-16">
+    <div class="space-content text-center">
+      <h2 class="text-3xl font-bold mb-4">Thank you for your submission!</h2>
+      <p class="text-xl mb-6">
+        I appreciate you taking the time to get in touch. Your message has been received, and I will respond to your inquiry as soon as possible.
+      </p>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        In the meantime, feel free to connect with me on <a href="https://www.linkedin.com/in/bryson-best/" class="text-primary-600 hover:underline" target="_blank" rel="noopener">LinkedIn</a>.
+      </p>
+    </div>
+  </section>
+  <style lang="scss">
+    .narrow.container {
+      max-width: 600px;
+    }
+    .space-content {
+      background: var(--background-color);
+      border-radius: 1rem;
+      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+      padding: 3rem 2rem;
+      margin: 0 auto;
+    }
+    h2 {
+      color: var(--color-primary-600);
+    }
+    // Dark mode overrides
+    .darkmode .space-content {
+      background: var(--color-neutral-900);
+    }
+    .darkmode h2 {
+      color: var(--color-primary-200);
+    }
+  </style>
+</DefaultLayout>
