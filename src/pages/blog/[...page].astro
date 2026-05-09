@@ -29,7 +29,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const postsWithImages = posts.map((post) => ({
     ...post,
     heroImage: post.data.heroImage || undefined,
-    shortUrl: post.slug,
+    shortUrl: post.id,
     title: post.data.title,
     description: post.data.description || '',
     author: post.data.author || '',
