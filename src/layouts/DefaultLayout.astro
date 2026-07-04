@@ -2,6 +2,7 @@
 import '../styles/tailwind.css'
 import '../assets/scss/index.scss'
 import SiteMeta from '../components/SiteMeta.astro'
+import GoogleAnalytics from '../components/GoogleAnalytics.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 
@@ -24,6 +25,7 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <SiteMeta title={title} description={description.substring(0, 100)} url={url} image={image} author={author} />
+    <GoogleAnalytics />
   </head>
   <body>
     <Header />

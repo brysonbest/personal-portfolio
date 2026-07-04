@@ -3,13 +3,18 @@ import mdx from '@astrojs/mdx'
 import compress from 'astro-compress'
 import icon from 'astro-icon'
 import tailwindcss from '@tailwindcss/vite'
+import partytown from '@astrojs/partytown';
 import { fileURLToPath } from 'url'
 
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
   site: 'https://bryson.best',
-  integrations: [mdx(), icon(), compress()],
+  integrations: [mdx(), icon(), compress(), partytown({
+    config: {
+      forward: ["dataLayer.push"],
+    },
+})],
   vite: {
     css: {
       preprocessorOptions: {
