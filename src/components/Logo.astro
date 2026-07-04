@@ -18,7 +18,7 @@ const { short = false }: Props = Astro.props
 ---
 
 <a href="/" class="flex items-center gap-2 !no-underline">
-  <PersonalLogo width={short ? "47" : "200"} height="auto" name="Bryson Best" short={short} />
+  <PersonalLogo width={short ? 47 : 200} height={short ? 37 : 95} name="Bryson Best" short={short} />
      <!-- {short ? <PersonalLogo alt="Bryson Best Logo" width="47" height="37" loading={loading} /> :
   <Image src={longLogo} alt="Bryson Best Logo" width="200" height="30" loading={loading} />  } -->
 </a>

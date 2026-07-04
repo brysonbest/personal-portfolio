@@ -10,11 +10,22 @@ import { fileURLToPath } from 'url'
 export default defineConfig({
   compressHTML: true,
   site: 'https://bryson.best',
-  integrations: [mdx(), icon(), compress(), partytown({
-    config: {
-      forward: ["dataLayer.push"],
-    },
-})],
+  integrations: [
+    mdx(),
+    icon(),
+    // CSS minification disabled: csso (used by astro-compress) drops MQ Level 4
+    // range syntax `@media (width>=…)`, which Tailwind v4 and Sass emit for
+    // responsive breakpoints. Without those rules the site stays mobile-only.
+    // Tailwind already minifies CSS via lightningcss, so this is redundant.
+    compress({
+      CSS: false,
+    }),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+      },
+    }),
+  ],
   vite: {
     css: {
       preprocessorOptions: {
