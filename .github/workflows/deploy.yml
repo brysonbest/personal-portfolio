@@ -14,11 +14,6 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  # GitHub-hosted runners are deprecating Node 20 for JavaScript actions.
-  # Opt into Node 24 now to avoid breakages as the default shifts.
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,12 +23,12 @@ jobs:
       PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.PUBLIC_RECAPTCHA_SITE_KEY }}
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install, build, and upload your site
-        uses: withastro/action@v3
+        uses: withastro/action@v6
         with:
           path: . # The root location of your Astro project inside the repository. (optional)
-          node-version: 24.15.0 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
+          node-version: 24.15.0 # The specific version of Node that should be used to build your site. Defaults to 24. (optional)
         # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
 
   deploy:
@@ -45,4 +40,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
