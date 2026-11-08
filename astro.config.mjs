@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url'
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  site: 'https://bryson.best',
+  site: 'https://developer.bryson.best',
   integrations: [
     mdx(),
     icon(),
